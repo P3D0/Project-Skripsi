@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock%}</title>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
+
+    <!--Javascript-->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <h2><img src="{{url_for('static', filename = 'pics/Halodo_logo.jpg')}}" width = "80%" height = "40%" alt="Logo"></h2>
+            <ul>
+                <li><a href="{{url_for('home')}}"><i class="fas fa-home"></i>Dashboard</a></li>
+                <li><a href="{{url_for('preprocessing')}}"><i class="fas fa-archive"></i>Preprocessing</a></li>
+                <li><a href="{{url_for('labeling')}}"><i class="fas fa-ribbon"></i>Labeling</a></li>
+                <li><a href="{{url_for('visualisasi')}}"><i class="fas fa-chart-pie"></i>Visualisasi</a></li>
+                <li><a href="{{url_for('sentimen')}}"><i class="fas fa-cog"></i>Klasifikasi Sentimen</a></li>
+            </ul>
+        </div>
+        <div class="main_content">
+            {% block content%}
+            {% endblock %}
+        </div>
+    </div>
+   
+
+    <script src="{{url_for('static', filename='app.js')}}"></script>
+
+    <!--ChartJS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+    <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+</body>
+</html>

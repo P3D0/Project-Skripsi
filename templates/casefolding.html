@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}
+Preprocessing
+{% endblock%}
+
+{% block content %}
+<div class="header">Analisis Sentimen Halodoc.</div>
+<div class="info">
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <a class="btn btn-outline-danger mr-4" href="{{url_for('datacrawling')}}" role="button">Crawling Data</a>
+            <a class="btn btn-outline-danger mr-4" href="{{url_for('casefolding')}}" role="button">Case Folding</a>
+            <a class="btn btn-outline-danger mr-4" href="{{url_for('textcleaning')}}" role="button">Text Cleaning</a>
+            <a class="btn btn-outline-danger mr-4" href="{{url_for('normalisasi')}}" role="button">Normalisasi</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Case Folding
+        </div>
+        <div class="card-body">
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        {% for i in header %}
+                            <th>{{i}}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in results%}
+                    <tr>
+                        {% for j in i %}
+                            <td>{{ j }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock%}

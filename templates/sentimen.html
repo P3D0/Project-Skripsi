@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+Klasifikasi Sentimen
+{% endblock%}
+
+{% block content %}
+<div class="header">Analisis Sentimen Halodoc.</div>
+<div class="info">
+    <div class="card">
+        <div class="card-header">
+            Sentiimen
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <div class="col-lg-12">
+                    <textarea class="form-control" rows="12" name="textnya" placeholder="Silahkan masukan kata"></textarea>
+                    <br>
+                    <button class="btn btn-outline-danger">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% if request.method == 'POST' %}
+    <div class="card">
+        <div class="card-header">
+            Hasil Prediksi
+        </div>
+        <div class="card-body">
+            <p style="text-align:center"> Text yang dimasukan : {{kata}}</p>
+            {% if sentiimen == 'Sentimen: Negatif' %}
+            <h2 class="text-center" style="color:red;">{{sentiimen}}</h2>
+            {% elif sentiimen == 'Sentimen: Netral' %}
+            <h2 class="text-center">{{sentiimen}}</h2>
+            {% elif sentiimen == 'Sentimen: Positif' %}
+            <h2 class="text-center" style="color:blue;">{{sentiimen}}</h2>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock%}
